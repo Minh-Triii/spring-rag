@@ -19,7 +19,8 @@ jobs:
           distribution: 'temurin'
           java-version: '23'
           cache: gradle
-
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew clean build
 
@@ -89,3 +90,4 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/spring-rag:latest
+
