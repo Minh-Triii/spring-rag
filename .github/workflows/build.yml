@@ -36,6 +36,8 @@ jobs:
           distribution: 'temurin'
           java-version: '23'
           cache: gradle
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: Run tests
         run: ./gradlew test
