@@ -2,7 +2,6 @@ package fr.efrei.springrag.web.rest;
 
 import fr.efrei.springrag.domain.Document;
 import fr.efrei.springrag.service.DocumentService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +16,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/documents")
 @Service
-public class DocumentRessource {
+public class DocumentResource {
 
     private final List<Document> documentList = new ArrayList<>();
+    private final DocumentService documentService;
+
+    public DocumentResource(DocumentService documentService) {
+        this.documentService = documentService;
+    }
 
     @GetMapping("/{id}")
     public Document getDocument(@PathVariable Long id) {
@@ -46,4 +50,10 @@ public class DocumentRessource {
         return null;
     }
 
+    @PostMapping("/documents/chat2/{user}")
+    public String chat2(@RequestBody String query) throws InterruptedException {
+        String result = documentService.chat(query);
+
+        return result;
+    }
 }
