@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/documents")
 @Service
